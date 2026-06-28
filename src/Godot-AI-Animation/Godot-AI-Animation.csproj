@@ -27,21 +27,21 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>com.IvanMurzak.Godot.MCP.YOUR_FEATURE</RootNamespace>
-    <AssemblyName>com.IvanMurzak.Godot.MCP.YOUR_FEATURE</AssemblyName>
+    <RootNamespace>com.IvanMurzak.Godot.MCP.Animation</RootNamespace>
+    <AssemblyName>com.IvanMurzak.Godot.MCP.Animation</AssemblyName>
 
     <!-- ===== Package identity (bump-version.ps1 / get-version.ps1 own the Version element) ===== -->
     <IsPackable>true</IsPackable>
-    <PackageId>com.IvanMurzak.Godot.MCP.YOUR_FEATURE</PackageId>
+    <PackageId>com.IvanMurzak.Godot.MCP.Animation</PackageId>
     <Version>0.1.0</Version>
-    <Title>YOUR_DISPLAY_NAME</Title>
+    <Title>Animation Tools</Title>
     <Authors>Ivan Murzak</Authors>
-    <Description>YOUR_DESCRIPTION</Description>
+    <Description>AI MCP tools for Godot Animation.</Description>
     <PackageTags>godot;mcp;ai;tools;godot-mcp;ai-game-developer</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/YOUR_GITHUB_USERNAME_REPOSITORY</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/YOUR_GITHUB_USERNAME_REPOSITORY</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/IvanMurzak/Godot-AI-Animation</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/IvanMurzak/Godot-AI-Animation</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
 
     <!-- ===== Source-only levers ===== -->
@@ -94,7 +94,7 @@
   <ItemGroup>
     <None Include="Runtime/**/*.cs" Pack="true" PackagePath="src/Runtime/" />
     <None Include="Editor/**/*.cs" Pack="true" PackagePath="src/Editor/" />
-    <None Include="build/com.IvanMurzak.Godot.MCP.YOUR_FEATURE.props" Pack="true" PackagePath="build/" />
+    <None Include="build/com.IvanMurzak.Godot.MCP.Animation.props" Pack="true" PackagePath="build/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 

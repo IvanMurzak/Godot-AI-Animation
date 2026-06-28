@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <!--
-    Unit-test project for the YOUR_DISPLAY_NAME extension. A PLAIN xUnit assembly (Microsoft.NET.Sdk),
+    Unit-test project for the Animation Tools extension. A PLAIN xUnit assembly (Microsoft.NET.Sdk),
     NOT a Godot game project — so it builds + runs in CI with no Godot binary.
 
     It compiles ONLY the PURE-MANAGED extension sources (the tools that live OUTSIDE #if TOOLS and touch
@@ -16,8 +16,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-    <RootNamespace>com.IvanMurzak.Godot.MCP.YOUR_FEATURE.Tests</RootNamespace>
-    <AssemblyName>com.IvanMurzak.Godot.MCP.YOUR_FEATURE.Tests</AssemblyName>
+    <RootNamespace>com.IvanMurzak.Godot.MCP.Animation.Tests</RootNamespace>
+    <AssemblyName>com.IvanMurzak.Godot.MCP.Animation.Tests</AssemblyName>
     <!-- No GodotSharp here: only pure-managed sources are compiled, and they reference no Godot type. -->
   </PropertyGroup>
 
@@ -35,8 +35,8 @@
     pure-managed source file you want to unit-test. Do NOT add files guarded by #if TOOLS here.
   -->
   <ItemGroup>
-    <Compile Include="..\..\src\Godot-AI-YOUR_FEATURE\Runtime\Tools\Tool_YOUR_FEATURE.cs" Link="Source\Tool_YOUR_FEATURE.cs" />
-    <Compile Include="..\..\src\Godot-AI-YOUR_FEATURE\Runtime\Tools\Tool_YOUR_FEATURE.Echo.cs" Link="Source\Tool_YOUR_FEATURE.Echo.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Tools\Tool_Animation.cs" Link="Source\Tool_Animation.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Tools\Tool_Animation.Echo.cs" Link="Source\Tool_Animation.Echo.cs" />
   </ItemGroup>
 
 </Project>

@@ -13,18 +13,18 @@ using com.IvanMurzak.McpPlugin;
 using com.IvanMurzak.ReflectorNet.Utils;
 using Godot;
 
-namespace com.IvanMurzak.Godot.MCP.YOUR_FEATURE
+namespace com.IvanMurzak.Godot.MCP.Animation
 {
-    public partial class Tool_YOUR_FEATURE
+    public partial class Tool_Animation
     {
         /// <summary>The editor-tool id, exposed as a const so E2E references the exact string.</summary>
-        public const string EditorInfoToolId = "YOUR_TOOL_PREFIX-editor-info";
+        public const string EditorInfoToolId = "animation-editor-info";
 
         /// <summary>
         /// Editor-only sample tool — touches the Godot editor API (<see cref="EditorInterface"/>,
         /// <see cref="Engine"/>), so it lives behind <c>#if TOOLS</c> (excluded from an exported game
         /// build) and is verified by the headless-Godot E2E (<c>godot-cli run-tool
-        /// YOUR_TOOL_PREFIX-editor-info</c>), NOT by the pure-managed unit tests — a plain xUnit host
+        /// animation-editor-info</c>), NOT by the pure-managed unit tests — a plain xUnit host
         /// has no live Godot main loop, so constructing <c>Node</c>/calling <c>EditorInterface</c> there
         /// would fault.
         ///
@@ -38,12 +38,12 @@ namespace com.IvanMurzak.Godot.MCP.YOUR_FEATURE
         [AiTool
         (
             EditorInfoToolId,
-            Title = "YOUR_DISPLAY_NAME / Editor Info",
+            Title = "Animation Tools / Editor Info",
             ReadOnlyHint = true,
             IdempotentHint = true,
             OpenWorldHint = false
         )]
-        [Description("Sample editor-only tool for the YOUR_DISPLAY_NAME extension. Returns the running " +
+        [Description("Sample editor-only tool for the Animation Tools extension. Returns the running " +
             "Godot editor version and UI scale. Demonstrates the #if TOOLS editor-tool pattern and the " +
             "mandatory main-thread marshalling for Godot editor API access.")]
         public string EditorInfo()

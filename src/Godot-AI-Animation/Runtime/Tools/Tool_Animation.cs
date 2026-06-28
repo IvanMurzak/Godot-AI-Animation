@@ -9,11 +9,11 @@
 #nullable enable
 using com.IvanMurzak.McpPlugin;
 
-namespace com.IvanMurzak.Godot.MCP.YOUR_FEATURE
+namespace com.IvanMurzak.Godot.MCP.Animation
 {
     /// <summary>
-    /// Sample MCP tool family for the YOUR_DISPLAY_NAME extension (tool ids prefixed
-    /// <c>YOUR_TOOL_PREFIX-*</c>). A tool family is one <c>[AiToolType]</c> <c>partial class</c>;
+    /// Sample MCP tool family for the Animation Tools extension (tool ids prefixed
+    /// <c>animation-*</c>). A tool family is one <c>[AiToolType]</c> <c>partial class</c>;
     /// each tool method (<c>[AiTool("&lt;name&gt;")]</c> + <c>[Description]</c>) lives in its own
     /// partial-class file. This is the SAME authoring model as Unity-MCP and the core Godot-MCP addon —
     /// ReflectorNet reflects the attributes, McpPlugin's assembly scanner auto-discovers the family
@@ -29,7 +29,7 @@ namespace com.IvanMurzak.Godot.MCP.YOUR_FEATURE
     ///   </item>
     ///   <item>
     ///     Tools that touch the Godot editor (<c>EditorInterface</c>, live <c>Node</c>/<c>Resource</c>)
-    ///     live behind <c>#if TOOLS</c> (see <c>../../Editor/Tools/Tool_YOUR_FEATURE.EditorInfo.cs</c>),
+    ///     live behind <c>#if TOOLS</c> (see <c>../../Editor/Tools/Tool_Animation.EditorInfo.cs</c>),
     ///     so they are excluded from an exported game build, and they marshal onto the editor main thread
     ///     via <c>MainThread.Instance.Run(...)</c> — NEVER touch Godot objects off-thread.
     ///   </item>
@@ -37,7 +37,7 @@ namespace com.IvanMurzak.Godot.MCP.YOUR_FEATURE
     /// </para>
     /// </summary>
     [AiToolType]
-    public partial class Tool_YOUR_FEATURE
+    public partial class Tool_Animation
     {
     }
 }

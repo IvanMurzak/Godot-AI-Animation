@@ -1,8 +1,8 @@
 <!--
-  CONSUMER testbed for the YOUR_DISPLAY_NAME extension (analog of Godot-MCP/engines/godot/test-project).
+  CONSUMER testbed for the Animation Tools extension (analog of Godot-MCP/engines/godot/test-project).
 
   Godot compiles EVERY .cs under this project into ONE assembly. The extension is a SOURCE-ONLY NuGet
-  package: restoring it imports `build/com.IvanMurzak.Godot.MCP.YOUR_FEATURE.props`, which injects the
+  package: restoring it imports `build/com.IvanMurzak.Godot.MCP.Animation.props`, which injects the
   package's `.cs` as <Compile> items here — so the extension's tools compile against THIS project's own
   GodotSharp. That is the whole point of the source-only recipe, exercised end-to-end.
 
@@ -18,7 +18,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <RootNamespace>YOUR_FEATURE_Testbed</RootNamespace>
+    <RootNamespace>Animation_Testbed</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +26,7 @@
     <PackageReference Include="com.IvanMurzak.ReflectorNet" Version="5.3.1" />
     <PackageReference Include="com.IvanMurzak.McpPlugin" Version="6.10.0" />
     <!-- The extension under test, restored from the local feed (CI packs it as 0.0.0-ci). -->
-    <PackageReference Include="com.IvanMurzak.Godot.MCP.YOUR_FEATURE" Version="0.0.0-ci" />
+    <PackageReference Include="com.IvanMurzak.Godot.MCP.Animation" Version="0.0.0-ci" />
   </ItemGroup>
 
 </Project>
