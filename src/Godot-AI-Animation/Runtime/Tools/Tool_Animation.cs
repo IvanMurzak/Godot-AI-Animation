@@ -12,26 +12,26 @@ using com.IvanMurzak.McpPlugin;
 namespace com.IvanMurzak.Godot.MCP.Animation
 {
     /// <summary>
-    /// Sample MCP tool family for the Animation Tools extension (tool ids prefixed
-    /// <c>animation-*</c>). A tool family is one <c>[AiToolType]</c> <c>partial class</c>;
-    /// each tool method (<c>[AiTool("&lt;name&gt;")]</c> + <c>[Description]</c>) lives in its own
-    /// partial-class file. This is the SAME authoring model as Unity-MCP and the core Godot-MCP addon —
-    /// ReflectorNet reflects the attributes, McpPlugin's assembly scanner auto-discovers the family
-    /// once the package's source compiles into the consumer's Godot project (no registry edit needed).
+    /// MCP tool family for the <b>Animation Tools</b> extension (tool ids prefixed <c>animation-*</c>) — wraps
+    /// Godot's built-in animation system (<c>AnimationPlayer</c> + <c>AnimationLibrary</c> + <c>Animation</c>),
+    /// a dependency-free, built-in family (no third-party engine code), so the package proves the source-only
+    /// NuGet distribution recipe with no extra variable. This is the SAME authoring model as Unity-MCP and the
+    /// core Godot-MCP addon: ReflectorNet reflects the attributes, and McpPlugin's assembly scanner
+    /// auto-discovers the family once the package's source compiles into the consumer's Godot project — <b>no
+    /// registry edit needed</b>.
     ///
     /// <para>
-    /// <b>Pure-managed vs editor-only.</b> Split tools by what API they touch, exactly like the core addon:
+    /// <b>Pure-managed vs editor-only.</b> Tools are split by the API they touch, exactly like the core addon:
     /// <list type="bullet">
     ///   <item>
-    ///     Tools with NO Godot native API surface (this file's <c>Echo</c>) stay OUTSIDE <c>#if TOOLS</c>
-    ///     so they compile in any consumer build AND are CI-unit-testable (no Godot binary required —
-    ///     a plain xUnit host can construct the class and call the method).
+    ///     Tools with NO Godot native API (<c>animation-defaults</c>, in <c>Runtime/Tools/</c>) stay OUTSIDE
+    ///     <c>#if TOOLS</c> so they compile in any consumer build AND are CI-unit-testable with no Godot binary.
     ///   </item>
     ///   <item>
-    ///     Tools that touch the Godot editor (<c>EditorInterface</c>, live <c>Node</c>/<c>Resource</c>)
-    ///     live behind <c>#if TOOLS</c> (see <c>../../Editor/Tools/Tool_Animation.EditorInfo.cs</c>),
-    ///     so they are excluded from an exported game build, and they marshal onto the editor main thread
-    ///     via <c>MainThread.Instance.Run(...)</c> — NEVER touch Godot objects off-thread.
+    ///     Tools that drive the editor / live scene (<c>animation-player-create</c>, <c>-library-add</c>,
+    ///     <c>-create</c>, <c>-add-track</c>, <c>-insert-key</c>, <c>-get</c>, in <c>Editor/Tools/</c>) live
+    ///     behind <c>#if TOOLS</c> (excluded from an exported game) and marshal every Godot call onto the editor
+    ///     main thread via <c>MainThread.Instance.Run(...)</c> — verified by the headless-Godot E2E.
     ///   </item>
     /// </list>
     /// </para>
