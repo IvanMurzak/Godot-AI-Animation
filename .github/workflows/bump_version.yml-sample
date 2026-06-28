@@ -1,0 +1,55 @@
+# Manual version bump for a Godot-MCP extension. Activated by `init` (bump_version.yml-sample -> .yml).
+# Dispatch with a version; opens a PR that bumps the package csproj <Version>. Merging to main then
+# triggers the version-gated release.yml.
+name: bump version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "New version (e.g. 1.2.3)"
+        required: true
+        type: string
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Validate version
+        run: |
+          if ! [[ "${{ github.event.inputs.version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Error: version must be X.Y.Z (got ${{ github.event.inputs.version }})"; exit 1
+          fi
+
+      - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "release/${{ github.event.inputs.version }}"
+
+      - name: Bump version
+        shell: pwsh
+        run: ./commands/bump-version.ps1 -NewVersion "${{ github.event.inputs.version }}"
+
+      - name: Commit and push
+        run: |
+          git add -A
+          git commit -m "chore: bump version to ${{ github.event.inputs.version }}"
+          git push origin "release/${{ github.event.inputs.version }}"
+
+      - name: Open PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base "${{ github.ref_name }}" \
+            --head "release/${{ github.event.inputs.version }}" \
+            --title "chore: bump version to ${{ github.event.inputs.version }}" \
+            --body "Automated version bump to \`${{ github.event.inputs.version }}\`."
