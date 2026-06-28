@@ -1,0 +1,21 @@
+tests/e2e/e2e-tools.json
+  s_e3cea916442b5e::t_19c89e828d7d3c 2-10,13-35,38-40
+src/Godot-AI-Animation/README.md
+  s_e3cea916442b5e::t_aef407f2eb5fa2 3-4,6-8,24,28-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "9f4eb02f79a783074fc86ca90b216f991618a4be",
+  "prompts": {},
+  "sessions": {
+    "s_e3cea916442b5e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c575ab56-73e6-4952-bb8b-fef415924e27",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Ivan Murzak <Ivan.D.Murzak@gmail.com>"
+    }
+  }
+}
