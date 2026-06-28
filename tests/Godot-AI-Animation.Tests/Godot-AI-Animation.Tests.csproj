@@ -36,7 +36,14 @@
   -->
   <ItemGroup>
     <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Tools\Tool_Animation.cs" Link="Source\Tool_Animation.cs" />
-    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Tools\Tool_Animation.Echo.cs" Link="Source\Tool_Animation.Echo.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Tools\Tool_Animation.Ids.cs" Link="Source\Tool_Animation.Ids.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Tools\Tool_Animation.Defaults.cs" Link="Source\Tool_Animation.Defaults.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Animation\AnimationLoopMode.cs" Link="Source\AnimationLoopMode.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Animation\AnimationTrackKind.cs" Link="Source\AnimationTrackKind.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Animation\AnimationTrackInfo.cs" Link="Source\AnimationTrackInfo.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Animation\AnimationClipInfo.cs" Link="Source\AnimationClipInfo.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Animation\AnimationPlayerInfo.cs" Link="Source\AnimationPlayerInfo.cs" />
+    <Compile Include="..\..\src\Godot-AI-Animation\Runtime\Animation\AnimationDefaults.cs" Link="Source\AnimationDefaults.cs" />
   </ItemGroup>
 
 </Project>
