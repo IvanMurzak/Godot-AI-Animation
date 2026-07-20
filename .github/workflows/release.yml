@@ -89,7 +89,7 @@ jobs:
 
       - name: Setup .NET
         if: ${{ vars.NUGET_USER != '' }}
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "8.0.x"
 
@@ -139,7 +139,7 @@ jobs:
 
       - name: Atomic GitHub Release (tag + nupkg + notes)
         if: ${{ vars.NUGET_USER != '' }}
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ needs.check-version-tag.outputs.version }}
           name: ${{ needs.check-version-tag.outputs.version }}
