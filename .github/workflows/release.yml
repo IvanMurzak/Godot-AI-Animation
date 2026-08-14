@@ -18,9 +18,22 @@ on:
   push:
     branches: [main]
 
+# Serialises release runs per ref so two releases can never publish concurrently.
+# `cancel-in-progress` is deliberately UNSET: an in-flight release may already have pushed the package
+# to NuGet or created the tag/Release, so it must be allowed to finish. `queue: max` raises the pending
+# queue from the default 1 to 100 — without it a queued release is silently cancelled and replaced by
+# the next trigger, which is how one version can be published while an earlier one never runs at all.
+# NOTE: `queue: max` together with `cancel-in-progress: true` is a workflow validation error.
+concurrency:
+  group: release-${{ github.ref }}
+  queue: max
+
 jobs:
   check-version-tag:
     runs-on: ubuntu-latest
+    # Observed 4-6 s on every historical run (full-history checkout + fetch-tags + tag-exists action).
+    # 10 min is runaway insurance for the network legs, against GitHub's 360 min default.
+    timeout-minutes: 10
     outputs:
       version: ${{ steps.get.outputs.version }}
       tag_exists: ${{ steps.tag.outputs.exists }}
@@ -43,6 +56,11 @@ jobs:
         with:
           tag: ${{ steps.get.outputs.version }}
 
+  # NOTE: no `timeout-minutes` on this job. It calls a reusable workflow (`uses:`), and a caller job
+  # rejects `timeout-minutes` with a hard workflow validation error — the bound has to live on the jobs
+  # INSIDE test.yml. Observed there: package-and-consume 23-30 s, e2e-godot 36-48 s; e2e-godot is the
+  # one leg with real network variance because it downloads a Godot binary. Left unbounded here
+  # deliberately: bounding it means editing test.yml, which is outside this change.
   test:
     needs: [check-version-tag]
     if: needs.check-version-tag.outputs.tag_exists == 'false'
@@ -64,6 +82,10 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+    # Real publish (NUGET_USER set) observed at 26 s; the owner-gated no-op path at 5 s. The headroom
+    # covers the third-party network legs this job does not control: the `dotnet pack` NuGet restore,
+    # the OIDC token mint, `dotnet nuget push` to nuget.org, and the Release asset upload.
+    timeout-minutes: 15
     needs: [check-version-tag, test]
     if: needs.check-version-tag.outputs.tag_exists == 'false'
     permissions:
