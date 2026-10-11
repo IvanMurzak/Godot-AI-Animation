@@ -31,10 +31,9 @@ the load-bearing detail — read `docs/source-only-nuget-recipe.md`.
 
 ## Tools
 
-Ids live in `Runtime/Tools/Tool_Animation.Ids.cs` (the source of truth). Each tool is one partial-class file
-named after it: pure-managed under `Runtime/Tools/`, editor tools under `Editor/Tools/`. Current tools:
-`animation-defaults` (pure-managed), `animation-player-create`, `animation-library-add`, `animation-create`,
-`animation-add-track`, `animation-insert-key`, `animation-get`.
+Ids live in `Runtime/Tools/Tool_Animation.Ids.cs` (the source of truth). Current tools: `animation-defaults`
+(pure-managed), `animation-player-create`, `animation-library-add`, `animation-create`, `animation-add-track`,
+`animation-insert-key`, `animation-get`.
 
 ## Build / test (no Godot binary)
 
