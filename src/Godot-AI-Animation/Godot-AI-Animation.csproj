@@ -33,7 +33,7 @@
     <!-- ===== Package identity (bump-version.ps1 / get-version.ps1 own the Version element) ===== -->
     <IsPackable>true</IsPackable>
     <PackageId>com.IvanMurzak.Godot.MCP.Animation</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Title>Animation Tools</Title>
     <Authors>Ivan Murzak</Authors>
     <Description>AI MCP tools for Godot Animation.</Description>
@@ -65,8 +65,8 @@
     Keep these aligned with Godot-MCP/Godot-MCP.csproj.
   -->
   <ItemGroup>
-    <PackageReference Include="com.IvanMurzak.ReflectorNet" Version="5.3.1" />
-    <PackageReference Include="com.IvanMurzak.McpPlugin" Version="6.10.0" />
+    <PackageReference Include="com.IvanMurzak.ReflectorNet" Version="5.4.1" />
+    <PackageReference Include="com.IvanMurzak.McpPlugin" Version="8.7.0" />
   </ItemGroup>
 
   <!--
